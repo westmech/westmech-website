@@ -18,6 +18,7 @@ const Navbar = () => {
         setActive(`/${String(location).split("/")[1]}`);
     });
 
+
     useMotionValueEvent(scrollY, "change", (latest) => {
         const previous = scrollY.getPrevious();
         if (latest > previous && latest > 0) {
