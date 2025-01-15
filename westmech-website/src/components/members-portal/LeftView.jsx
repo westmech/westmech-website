@@ -7,13 +7,13 @@ const LeftView = ({title, logoSrc, logoWidth, logoHeight}) => {
   return (
     <div className="w-1/2 h-100 flex items-center justify-center" style={{background: "linear-gradient(to bottom, #017FE0 60%, #5EACE9)"}}>
       <div className="text-center flex flex-col items-center">
-        <Image
+        <Image 
             src={logoSrc}
             alt="Sign in as person"
             width={logoWidth}
             height={logoHeight}
             />
-          <div className="w-[330px]">
+          <div className="w-[330px] mt-2">
             <p className="text-white text-[70px] font-bold">
               {title.split("\n")[0]}
             </p>
@@ -22,6 +22,12 @@ const LeftView = ({title, logoSrc, logoWidth, logoHeight}) => {
             </p>
           </div>
         </div>
+        <Image className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
+            src="/login/tab.svg"
+            alt="Sign in as person"
+            width={100}
+            height={100}
+        />
       </div>
     );
 };
