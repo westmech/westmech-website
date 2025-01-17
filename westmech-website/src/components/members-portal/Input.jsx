@@ -12,15 +12,14 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 
   
-const Input = ({label, mb, width}) => {
-    const isValidEmail = (email) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
+const Input = ({label, mb, width, value, onChange}) => {
+
     return (
         <FormControl fullWidth sx={{ width: width, mb:mb }}>
         <InputLabel htmlFor="outlined-adornment-amount" sx={{ fontSize: '22px' }}>Email</InputLabel>
         <OutlinedInput sx={{height:60}}
+                value={value}
+                onChange={onChange}
         id="outlined-adornment-amount"
         label={label}
         />
@@ -32,6 +31,8 @@ Input.propTypes = {
     label: PropTypes.string.isRequired,
     mb: PropTypes.number,
     width: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
   };
 
 export default Input;

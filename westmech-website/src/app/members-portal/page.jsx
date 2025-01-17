@@ -2,8 +2,6 @@ import React from "react";
 import LeftView from "@/components/members-portal/LeftView";
 import ProfileButton from "@/components/members-portal/ProfileButton";
 
-import Image from "next/image";
-
 const page = () => {
   const bg = "#F4F4F6";
   const darkblue = "#017FE0";

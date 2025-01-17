@@ -12,7 +12,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useState } from "react";
 
   
-const PasswordInput = ({mb, width}) => {
+const PasswordInput = ({mb, width, value, onChange}) => {
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -29,6 +29,8 @@ const PasswordInput = ({mb, width}) => {
         <OutlinedInput sx={{height:60}}
         id="outlined-adornment-password"
         type={showPassword ? 'text' : 'password'}
+        value={value}
+        onChange={onChange}
         endAdornment={
             <InputAdornment position="end">
             <IconButton
@@ -53,6 +55,8 @@ const PasswordInput = ({mb, width}) => {
 PasswordInput.propTypes = {
     mb: PropTypes.number,
     width: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
   };
 
 export default PasswordInput;
