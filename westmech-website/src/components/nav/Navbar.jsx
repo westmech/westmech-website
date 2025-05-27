@@ -18,6 +18,7 @@ const Navbar = () => {
         setActive(`/${String(location).split("/")[1]}`);
     });
 
+
     useMotionValueEvent(scrollY, "change", (latest) => {
         const previous = scrollY.getPrevious();
         if (latest > previous && latest > 0) {
@@ -50,12 +51,13 @@ const Navbar = () => {
                         />
                     </div>
                 </figure>
-                <section className="w-1/3 flex-row-centered">
+                <section className="flex-row-centered w-full">
                     {[
                         ["Home", "/"],
                         ["About", "/about"],
                         ["Programs", "/programs"],
                         ["Blog", "/blog"],
+                        ["Members Portal", "/members-portal"],
                     ].map(([title, url]) => (
                         <a
                             href={url}
