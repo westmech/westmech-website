@@ -6,7 +6,7 @@ import React, { useState } from "react";
 
 
 const page = () => {
-    const [Tab, setTab] = useState("FEATURED"); // FEATURED, 2024, 2023, 2022
+    const [Tab, setTab] = useState("FEATURED"); // FEATURED, 2024, 2023, 2022 hello
     return (
         <main className="w-screen bg-[#F4F4F6]">
             <section className="w-screen flex-col-centered">
