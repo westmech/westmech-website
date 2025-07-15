@@ -1,3 +1,6 @@
+// Zechariah Wang June 24 2025
+// THIS IS JUST THE OLD NAV BAR, WE ARE USING THE NEW ONE IN THE UI COMPONENT LIBRARY
+
 "use client";
 
 import Image from "next/image";
