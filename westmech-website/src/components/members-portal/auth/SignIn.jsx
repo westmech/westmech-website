@@ -2,6 +2,7 @@
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import Link from "next/link";
 
 const SignIn = ({ colour, user }) => {
   const [visible, setVisible] = useState(false);
@@ -23,7 +24,7 @@ const SignIn = ({ colour, user }) => {
           required
           onFocus={(e) => (e.target.style.borderColor = colour)}
           onBlur={(e) => (e.target.style.borderColor = greyBorder)}
-          className={`border-[1.5px] sm:text-[18px] border-gray-300 focus:outline-none rounded-md p-3`}
+          className={`border-[1.5px] sm:text-[18px] border-gray-300 pointer focus:outline-none rounded-md p-3`}
         ></input>
         <div className="relative">
           <input
@@ -32,7 +33,7 @@ const SignIn = ({ colour, user }) => {
             required
             onFocus={(e) => (e.target.style.borderColor = colour)}
             onBlur={(e) => (e.target.style.borderColor = greyBorder)}
-            className={`border-[1.5px] sm:text-[18px] border-gray-300 focus:outline-none rounded-md p-3 w-full pr-10`}
+            className={`border-[1.5px] sm:text-[18px] border-gray-300 pointer focus:outline-none rounded-md p-3 w-full pr-10`}
           />
           {visible ? (
             <BsEye
@@ -59,13 +60,13 @@ const SignIn = ({ colour, user }) => {
               Remember Me
             </label>
           </div>
-          <a
+          <Link
             href="/members-portal/password-reset"
             style={{color:colour}}
             className={`text-[18px] hover:text-[black] cursor-pointer"`}
           >
             Forgot Password?
-          </a>
+          </Link>
         </div>
       </form>
       <div className="flex items-center my-[8px]">
@@ -79,13 +80,13 @@ const SignIn = ({ colour, user }) => {
       </button>
       <div>
         <p className="text-[18px] mb-1 mt-4">Don't have an account?</p>
-        <a
-          href="#"
+        <Link
+          href="/members-portal/create-account"
           style={{color:colour}}
           className={`text-[18px] font-medium hover:text-[black] cursor-pointer inline-block`}
         >
           Create Account
-        </a>
+        </Link>
       </div>
     </div>
   );

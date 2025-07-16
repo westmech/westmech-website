@@ -1,5 +1,5 @@
 import React from "react";
-import SignIn from "@/components/members-portal/SignIn";
+import SignIn from "@/components/members-portal/auth/SignIn";
 
 const page = () => {
   const bg = "#F4F4F6";
