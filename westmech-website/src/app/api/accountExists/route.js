@@ -1,0 +1,16 @@
+import connectMongoDB from "@/lib/mongodb";
+import User from "@/models/user";
+import { NextResponse } from "next/server";
+
+// checks if user already exists or not
+
+export async function POST(req) {
+    try {
+        connectMongoDB();
+        const { email } = await req.json();
+        const user = await User.findOne({email}).select("_id");
+        return NextResponse.json({ user });
+    } catch (error) {
+        console.log(error);
+    }
+}
