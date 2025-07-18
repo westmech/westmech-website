@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Button from "../../button/Button";
 
 const GirlPowered = () => {
     return (
@@ -18,7 +19,16 @@ const GirlPowered = () => {
                 A 2-day robotics summer camp to dip your toes into robotics for
                 the first time. Happening July 27-28.
             </p>
-            <button className="border-2 border-black border-opacity-50 rounded-full px-6 text-3xl-responsive opacity-50 absolute bottom-0">Sign up</button>
+            <Button 
+                type="secondary"
+                sx={{
+                    position: "absolute",
+                    bottom: 2,
+                }}
+                href="https://robotics.dreamclass.io/pages/admissions/form/vjVbOT"
+                target="_blank">
+                Sign Up
+            </Button>
         </div>
     );
 };

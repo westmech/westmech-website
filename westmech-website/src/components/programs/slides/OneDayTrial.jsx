@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Button from "../../button/Button";
 
 const OneDayTrial = () => {
     return (
@@ -20,9 +21,16 @@ const OneDayTrial = () => {
                 Build a robot at our facility and see for yourself if robotics
                 is for you! Book a meeting today!
             </p>
-            <button className="border-2 border-black border-opacity-50 rounded-full px-6 text-3xl-responsive opacity-50 absolute bottom-0">
-                Book meeting
-            </button>
+            <Button
+                type="secondary"
+                sx={{
+                    position: "absolute",
+                    bottom: 2,
+                }}
+                href="https://robotics.dreamclass.io/pages/admissions/form/kpSJZk"
+                target="_blank">
+                Book Meeting
+            </Button>
         </div>
     );
 };

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Carousel from "./Carousel";
 import React from "react";
+import Button from "../button/Button";
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 const Programs = () => {
     return (
@@ -65,10 +67,8 @@ const Programs = () => {
                             robots to tournaments and compete against other
                             organizations from across the world.
                         </p>
-
-                        <button className="mt-16 text-4xl-responsive transition duration-500 ease-in-out border-[1px] border-black border-opacity-50 rounded-full px-8">
-                            See Competitions →
-                        </button>
+                        {/* TODO: add link */}
+                        <Button type="secondary" endIcon={<ArrowRightAltIcon/>} sx={{width: 'fit-content', mt: 2}}> See Competitions</Button>
                     </div>
                 </div>
             </section>

@@ -1,5 +1,7 @@
 import Image from "next/image";
 import React from "react";
+import Button from "../button/Button";
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 const Space = () => {
     return (
@@ -60,7 +62,8 @@ const Space = () => {
                 <span className="h-full w-full flex-row-start ml-4">4144 Macleod Trail SE Unit C, Calgary, AB</span>
 
                 <div className="w-full h-full flex-row-end">
-                    <button className="hover:text-[#017FE0] transition duration-500 ease-in-out">Book a visit <span className="ml-3">→</span></button>
+                    {/* // TODO: Add link to button */}
+                    <Button type="text" endIcon={<ArrowRightAltIcon />} sx={{fontWeight: 'bold'}}>Book a visit</Button>
                 </div>
             </div>
         </section>

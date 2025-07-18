@@ -1,5 +1,7 @@
 import Image from "next/image";
 import React from "react";
+import Button from "../button/Button";
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 const Team = () => {
     return (
@@ -21,7 +23,7 @@ const Team = () => {
                         Western Mechatronics was founded in 2019 by high school
                         friends who recognized the need for robotics education.
                     </h2>
-
+d
                     <figure className="relative w-full h-screen">
                         <Image
                             src={"/about/Vishal.png"}
@@ -113,9 +115,24 @@ const Team = () => {
                 <header className="text-white text-7xl-responsive tracking-tighter font-medium">
                     Want to work with us?
                 </header>
-                <button className="mt-16 w-[25vw] h-[3vw] rounded-full text-white text-4xl-responsive border-2 bg-white bg-opacity-5">
-                    Become a Partner →
-                </button>
+                {/* TODO: link to partnership page
+                current page: "https://www.westernmech.ca/partnership" */}
+                <Button 
+                    type="secondary"
+                    endIcon={<ArrowRightAltIcon />}
+                    sx={{
+                        width: '35%',
+                        height: 'fit-content',
+                        my: 2,
+                        border: '1px solid #FFFFFF',
+                        color: '#FFFFFF',
+                        '&:hover': {
+                            backgroundColor: 'rgba(255, 255, 255, .1)',
+                        },
+                    }}
+                    href="https://www.westernmech.ca/partnership">
+                    Become a Partner
+                </Button>
             </footer>
         </div>
     );

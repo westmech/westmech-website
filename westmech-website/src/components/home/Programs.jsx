@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import { programs } from "./programs.json";
+import Button from "../button/Button";
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 const Programs = () => {
     return (
@@ -38,9 +40,9 @@ const Programs = () => {
             </div>
 
             <div className="w-[80vw] h-full flex-row-end text-xl font-medium mt-16">
-                <button className="hover:text-[#017FE0] transition duration-500 ease-in-out">
-                    See all Programs →
-                </button>
+                <Button type="text" endIcon={<ArrowRightAltIcon />} href="/programs">
+                    See all Programs
+                </Button>
             </div>
         </section>
     );
