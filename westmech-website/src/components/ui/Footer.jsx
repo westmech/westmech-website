@@ -1,6 +1,3 @@
-// NOT BEING USED
-// This file is not being used in the current version of the project.
-
 import Image from "next/image";
 import React from "react";
 
