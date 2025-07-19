@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import {
   AppBar,
   Toolbar,
-  Button,
   Box,
   Container,
   useTheme,
@@ -22,6 +21,7 @@ import {
 import { Menu as MenuIcon } from "@mui/icons-material";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import Button from "../button/Button";
 
 function HideOnScroll(props) {
   const { children } = props;
@@ -92,18 +92,7 @@ const Navbar = () => {
         ))}
       </List>
       <Box sx={{ p: 2 }}>
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: "#017FE0",
-            borderRadius: "25px",
-            px: 3,
-            py: 1,
-            "&:hover": {
-              backgroundColor: "#0168b3",
-            },
-          }}
-        >
+        <Button type="primary">
           Register Now
         </Button>
       </Box>
@@ -151,11 +140,12 @@ const Navbar = () => {
                 <Box sx={{ display: "flex", gap: 1 }}>
                   {navigationItems.map((item) => (
                     <Button
+                      type="text"
                       key={item.title}
                       component="a"
                       href={item.url}
                       sx={{
-                        color: active === item.url ? "black" : "#939393",
+                        color: active === item.url ? theme.palette.text.primary : theme.palette.text.secondary,
                         textTransform: "none",
                         fontSize: "0.9rem",
                         borderRadius: "20px",
@@ -163,7 +153,7 @@ const Navbar = () => {
                         py: 1,
                         "&:hover": {
                           backgroundColor: "rgba(1, 127, 224, 0.1)",
-                          color: "#017FE0",
+                          color: theme.palette.primary.main,
                         },
                       }}
                     >
@@ -175,19 +165,10 @@ const Navbar = () => {
 
               {!isMobile && (
                 <Button
-                  variant="contained"
+                  type="primary"
                   sx={{
-                    backgroundColor: "#017FE0",
-                    borderRadius: "25px",
-                    px: 3,
-                    py: 1,
+                    fontSize: '1rem',
                     minWidth: "120px",
-                    "&:hover": {
-                      backgroundColor: "#0168b3",
-                      transform: "translateY(-1px)",
-                      boxShadow: "0 4px 12px rgba(1, 127, 224, 0.3)",
-                    },
-                    transition: "all 0.2s ease",
                   }}
                 >
                   Register Now
