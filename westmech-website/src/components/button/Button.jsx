@@ -1,34 +1,35 @@
+"use client";
+
 import React from 'react';
 import MUIButton from '@mui/material/Button';
+import { useTheme } from '@mui/material/styles';
 
 const Button = ({
     type='primary',
     htmlType = 'button',
-    onClick,
     endIcon,
     children,
     sx = {textTransform: 'none'},
     ...props}) => {
+        const theme = useTheme();
+        const { primary, secondary, text } = theme.palette;
     switch (type) {
         case 'primary':
             return (
                 <MUIButton
                     variant='contained'
                     endIcon={endIcon}
-                    onClick={onClick}
-                    disableElevation
                     disableRipple
                     sx={{
-                        bgcolor: '#017fe0',
+                        bgcolor: primary.main,
                         color: 'white',
-                        textTransform: 'none',
-                        fontSize: '1.2rem',
-                        borderRadius: '30px',
-                        px: 3,
-                        py: .25,
+                        fontSize: '1.1rem',
                         '&:hover': {
-                            backgroundColor: 'rgba(1, 127, 224, .85)',
+                            bgcolor: primary.dark,
+                            transform: "translateY(-1px)",
+                            boxShadow: "0 4px 12px rgba(1, 127, 224, 0.3)",
                         },
+                        transition: "all 0.2s ease",
                         ...sx,
                     }}
                     {...props}
@@ -41,19 +42,17 @@ const Button = ({
                 <MUIButton
                     variant='outlined'
                     endIcon={endIcon}
-                    disableElevation
                     disableRipple
                     sx={{
-                        border: '1px solid rgba(0,0,0,.5)',
-                        color: 'rgba(0, 0, 0, .5)',
-                        borderRadius: '30px',
-                        textTransform: 'none',
-                        fontSize: '1.3rem',
-                        px: 3,
-                        py: .25,
+                        border: '1px solid ' + secondary.light,
+                        color: secondary.main,
+                        fontSize: '1.1rem',
                         '&:hover': {
-                            backgroundColor: 'rgba(0,0,0,.2)',
+                            bgcolor: secondary.light,
+                            transform: "translateY(-1px)",
+                            boxShadow: "0 4px 12px " + secondary.light,
                         },
+                        transition: "all 0.2s ease",
                         ...sx,
                     }}
                     {...props}
@@ -66,19 +65,20 @@ const Button = ({
                 <MUIButton
                     variant='text'
                     endIcon={endIcon}
-                    disableElevation
                     disableRipple
                     sx={{
                         bgcolor: 'transparent',
-                        color: '#000000',
+                        color: text.primary,
                         textTransform: 'none',
                         fontSize: '1.2rem',
                         px: 0,
                         py: .5,
-                        minWidth: 0,
                         '&:hover': {
-                            color: '#017fe0',
+                            color: primary.main,
+                            transform: "translateY(-1px)",
+                            textShadow: "0 4px 12px rgba(1, 127, 224, 0.3)",
                         },
+                        transition: "all 0.2s ease",
                         ...sx,
                     }}
                     {...props}

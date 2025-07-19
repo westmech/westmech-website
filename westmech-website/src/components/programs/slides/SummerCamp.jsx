@@ -25,7 +25,7 @@ const SummerCamp = () => {
                 type="secondary"
                 sx={{
                     position: "absolute",
-                    bottom: 2,
+                    bottom: 10,
                 }}
                 href="https://robotics.dreamclass.io/pages/admissions/form/ElzosS"
                 target="_blank">

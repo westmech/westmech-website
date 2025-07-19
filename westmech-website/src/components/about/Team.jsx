@@ -23,7 +23,7 @@ const Team = () => {
                         Western Mechatronics was founded in 2019 by high school
                         friends who recognized the need for robotics education.
                     </h2>
-d
+                    
                     <figure className="relative w-full h-screen">
                         <Image
                             src={"/about/Vishal.png"}
@@ -128,7 +128,10 @@ d
                         color: '#FFFFFF',
                         '&:hover': {
                             backgroundColor: 'rgba(255, 255, 255, .1)',
+                            transform: "translateY(-1px)",
+                            boxShadow: "0 4px 12px rgba(255, 255, 225, 0.1)",
                         },
+                        transition: "all 0.2s ease",
                     }}
                     href="https://www.westernmech.ca/partnership">
                     Become a Partner

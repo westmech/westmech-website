@@ -14,7 +14,7 @@ const Carousel = () => {
                 <SummerCamp />
             </article>
             <h3 className="w-[80vw] flex flex-row items-center justify-center text-black text-4xl-responsive gap-1 mt-24">
-                
+            {/* TODO: link buttons (to carosel elements?) */}
             <Button type="text" sx={{ fontSize: '2rem' }}>01</Button>
             <Button type="text" sx={{ fontSize: '2rem' }}>02</Button>
             <Button type="text" sx={{ fontSize: '2rem' }}>03</Button>

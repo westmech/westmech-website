@@ -70,17 +70,12 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: '25px',
+          px: 3,
+          py: 1,
           textTransform: 'none',
           fontWeight: 400,
+          padding: '8px 24px',
           boxShadow: 'none',
-          '&:hover': {
-            boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-          },
-        },
-        contained: {
-          '&:hover': {
-            boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-          },
         },
       },
     },

@@ -23,7 +23,7 @@ const GirlPowered = () => {
                 type="secondary"
                 sx={{
                     position: "absolute",
-                    bottom: 2,
+                    bottom: 10,
                 }}
                 href="https://robotics.dreamclass.io/pages/admissions/form/vjVbOT"
                 target="_blank">
