@@ -3,9 +3,16 @@ import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const SignIn = ({ colour, user }) => {
   const [visible, setVisible] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
+
   let altColour = "#57a8e7";
   if (user === "student") {
     altColour = "#AD88FE";
@@ -13,13 +20,34 @@ const SignIn = ({ colour, user }) => {
   useEffect(()=> {
     console.log(colour)
   })
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    try { 
+      const res = await signIn("credentials", {
+        email, 
+        password, 
+        redirect: false
+      });
+      if (res.error) {
+        setError("Invalid Credentials");
+        console.log("Invalid Credentials");
+        return;
+      }
+      router.replace("/");
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
   const greyBorder = "rgb(209 213 219 / var(--tw-border-opacity))";
   return (
     <div className="flex flex-col w-[70%] gap-[12px]">
-      <form className="flex flex-col gap-[12px]">
+      <form className="flex flex-col gap-[12px]" onSubmit={handleSubmit}>
         <h1 className="text-[28px] sm:text-[36px] sm:text-left text-center">Sign In</h1>
         <input
           placeholder="Email"
+          onChange={e => setEmail(e.target.value)}
           type="email"
           required
           onFocus={(e) => (e.target.style.borderColor = colour)}
@@ -29,6 +57,7 @@ const SignIn = ({ colour, user }) => {
         <div className="relative">
           <input
             placeholder="Password"
+            onChange={e => setPassword(e.target.value)}
             type={`${visible ? "text" : "password"}`}
             required
             onFocus={(e) => (e.target.style.borderColor = colour)}

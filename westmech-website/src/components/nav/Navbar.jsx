@@ -57,7 +57,7 @@ const Navbar = () => {
                         ["About", "/about"],
                         ["Programs", "/programs"],
                         ["Blog", "/blog"],
-                        ["Members Portal", "/members-portal"],
+                        ["Members Portal", "/members-portal/sign-in"],
                     ].map(([title, url]) => (
                         <a
                             href={url}

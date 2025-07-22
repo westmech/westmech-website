@@ -3,8 +3,9 @@ import React from 'react'
 import { useState } from 'react';
 import {Select, SelectItem} from "@heroui/select";
 import { userRoles } from '../../../../config/constants';
+import { useRouter } from 'next/navigation';
 
-const SignUp = () => {
+export default function SignUp() {
     const [user, setUser] = useState({
         firstName: '',
         lastName: '',
@@ -12,6 +13,9 @@ const SignUp = () => {
         password: '',
         role: '',
     });
+
+    const router = useRouter();
+
     const [error, setError] = useState("");
     const handleSelectionChange = (e) => {
         setUser((prev) => ({
@@ -30,21 +34,21 @@ const SignUp = () => {
 
         // sending to backend 
         try {
-            const resAccountExists = await fetch('/api/userExists', {
+            const resAccountExists = await fetch('/api/account-exists', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({email: user.email}),
+                body: JSON.stringify({ email: user.email }),
             });
             
-            const { user } = await resAccountExists.json();
+            const { resJSON } = await resAccountExists.json();
 
-            if (user) {
+            if (resJSON && resJSON.user) {
                 setError("Account already exists");
                 return;
             }
-
+            
             const res = await fetch('/api/register', {
                 method: "POST",
                 headers: {
@@ -66,11 +70,13 @@ const SignUp = () => {
                 role: '',
             });
             setError("");
+            router.replace("/members-portal/sign-in");
         } else {
             console.log("User Registration Failed");
         }
         } catch (error) {
             setError("User Registration Failed")
+            console.log("error", error)
         }
     }
 
@@ -145,5 +151,3 @@ const SignUp = () => {
     </div>
   )
 }
-
-export default SignUp
