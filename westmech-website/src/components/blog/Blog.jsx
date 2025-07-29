@@ -1,6 +1,8 @@
 import React from "react";
 import { blog } from "./blog.json";
 import Image from "next/image";
+import Button from "../button/Button";
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 const Blog = () => {
     return (
@@ -28,15 +30,13 @@ const Blog = () => {
                         <p className="text-3xl-responsive opacity-50">
                             {item.description}
                         </p>
-                        <button className="hover:text-[#017FE0] transition duration-500 ease-in-out mt-16 text-3xl-responsive tracking-tighter">
-                            Read more →
-                        </button>
+                        <Button type="text" endIcon={<ArrowRightAltIcon />}> Read More</Button>
                     </div>
                 </article>
             ))}
-            <button className="hover:text-[#017FE0] transition duration-500 ease-in-out mt-6 mb-16 text-3xl-responsive underline tracking-tighter">
+            <Button type="text" endIcon={<ArrowRightAltIcon/>} sx={{ fontSize: "1.5rem", mt: 1, mb: 10 }}>
                 ALL BLOGS
-            </button>
+            </Button>
         </div>
     );
 };
