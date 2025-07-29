@@ -16,14 +16,11 @@ const TitleView = ({ user, title, logo }) => {
         <img
           className="w-[107px] h-[83px] sm:w-[215px] sm:h-[166px]"
           src={logo}
-          alt="Sign in as person"
+          alt="Sign in"
         />
         <div className="mt-2 flex flex-col">
           <p className="text-white text-[35px] sm:text-[70px] font-bold">
-            {title.split(" ")[0]}
-          </p>
-          <p className="text-white text-[35px] sm:text-[70px] font-bold">
-            {title.split(" ")[1]}
+            {title}
           </p>
         </div>
       </div>

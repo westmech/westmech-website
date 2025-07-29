@@ -13,7 +13,7 @@ const page = () => {
 
   // navigating back button
   const handleNavigate = () => {
-    router.push("/members-portal/parents-portal");
+    router.push("/members-portal");
   };
 
   return (
