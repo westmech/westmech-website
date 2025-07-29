@@ -2,6 +2,7 @@ import { Roboto } from "next/font/google";
 import ThemeWrapper from "@/components/ui/ThemeWrapper";
 import Navbar from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui";
+import { AuthProvider } from "./Providers";
 import "./globals.css";
 
 const inter = Roboto({

@@ -7,7 +7,7 @@ const page = () => {
   return (
     <main
       style={{ backgroundColor: bg }}
-      className="sm:min-h-screen w-screen flex flex-col sm:flex-row overflow-y-auto"
+      className="sm:min-h-screen w-screen flex flex-col sm:flex-row overflow-y-auto mt-[-96px]"
     >
       <div className="flex flex-col sm:w-[50%] bg-gradient-to-b from-[#017FE0] to-[#5EACE9] items-center justify-center sm:mt-[-100px] mt-[100px] sm:py-0 py-10">
           <img
@@ -18,9 +18,8 @@ const page = () => {
           <p className="text-white text-[35px] sm:text-[70px] font-bold sm:inline hidden">SIGN IN</p>
 
       </div>
-      {/*<TitleView user="parent" title="SIGN IN" logo="/login/westmech logo.svg"></TitleView>*/}
       <div
-        className="mb-16 sm:h-screen h-1/2 sm:w-[50%] flex sm:mt-0 mt-10 justify-center items-center"
+        className="mb-16 sm:h-screen h-1/2 sm:w-[50%] flex justify-center items-center"
       >
         <SignIn colour="#017FE0" user="parent"></SignIn>
       </div>

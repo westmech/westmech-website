@@ -4,6 +4,7 @@ import { useState } from 'react';
 import {Select, SelectItem} from "@heroui/select";
 import { userRoles } from '../../../../config/constants';
 import { useRouter } from 'next/navigation';
+import { Title } from '@/components/ui/headings/Headings';
 
 export default function SignUp() {
     const [user, setUser] = useState({
@@ -81,12 +82,13 @@ export default function SignUp() {
     }
 
   return (
-    <div>
+    <div className="flex flex-col w-[70%]">
     {error && 
     <div className="bg-red-200 text-bg-red-800">
         {error}
     </div>}
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+            <Title title="Create Account"/>
             <div className="flex flex-col sm:flex-row gap-5">
                 <input  onChange={(e) =>
                         setUser((prev) => ({
@@ -94,7 +96,7 @@ export default function SignUp() {
                         firstName: e.target.value
                         }))
                     }
-                    placeholder="First Name"
+                    placeholder="First Name *"
                     type="text"
                     required
                     className={`border-[1.5px] sm:text-[18px] border-gray-300 pointer focus:outline-none rounded-md p-3`}
@@ -105,7 +107,7 @@ export default function SignUp() {
                         lastName: e.target.value
                         }))
                     }
-                    placeholder="Last Name"
+                    placeholder="Last Name *"
                     type="text"
                     required
                     className={`border-[1.5px] sm:text-[18px] border-gray-300 pointer focus:outline-none rounded-md p-3`}
@@ -117,7 +119,7 @@ export default function SignUp() {
                     email: e.target.value
                     }))
                 }
-                placeholder="Email"
+                placeholder="Email *"
                 type="email"
                 required
                 className={`border-[1.5px] sm:text-[18px] border-gray-300 pointer focus:outline-none rounded-md p-3`}
@@ -128,15 +130,15 @@ export default function SignUp() {
                     password: e.target.value
                     }))
                 }
-                placeholder="Password"
+                placeholder="Password *"
                 type="password"
                 required
                 className={`border-[1.5px] sm:text-[18px] border-gray-300 pointer focus:outline-none rounded-md p-3`}
             ></input>
 
-            <Select required className="max-w-xs" label="Are you a..." style={{background: "white"}}
+            <Select required className="max-w-xs" label="Are you a..." style={{background: "white", border:"1.5px solid rgb(209 213 219 / var(--tw-border-opacity))"}}
                     selectedKeys={[user.role]}
-                    onChange={handleSelectionChange}
+                    onChange={handleSelectionChange}  
                 >
                 {userRoles.map((role) => (
                 <SelectItem key={role.key}>{role.label}</SelectItem>

@@ -1,13 +1,14 @@
 "use client";
-import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { Input } from "../../ui/input/Input";
+import { PasswordInput } from "@/components/ui/input/PasswordInput";
+import { Title } from "@/components/ui/headings/Headings";
 
 const SignIn = ({ colour, user }) => {
-  const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -40,42 +41,20 @@ const SignIn = ({ colour, user }) => {
     }
   }
 
-  const greyBorder = "rgb(209 213 219 / var(--tw-border-opacity))";
   return (
-    <div className="flex flex-col w-[70%] gap-[12px]">
+    <div className="flex flex-col w-[70%] gap-5">
       <form className="flex flex-col gap-[12px]" onSubmit={handleSubmit}>
-        <h1 className="text-[28px] sm:text-[36px] sm:text-left text-center">Sign In</h1>
-        <input
+        <Title title="Sign In"/>
+        <Input
           placeholder="Email"
           onChange={e => setEmail(e.target.value)}
           type="email"
-          required
-          onFocus={(e) => (e.target.style.borderColor = colour)}
-          onBlur={(e) => (e.target.style.borderColor = greyBorder)}
-          className={`border-[1.5px] sm:text-[18px] border-gray-300 pointer focus:outline-none rounded-md p-3`}
-        ></input>
-        <div className="relative">
-          <input
-            placeholder="Password"
-            onChange={e => setPassword(e.target.value)}
-            type={`${visible ? "text" : "password"}`}
-            required
-            onFocus={(e) => (e.target.style.borderColor = colour)}
-            onBlur={(e) => (e.target.style.borderColor = greyBorder)}
-            className={`border-[1.5px] sm:text-[18px] border-gray-300 pointer focus:outline-none rounded-md p-3 w-full pr-10`}
-          />
-          {visible ? (
-            <BsEye
-              onClick={() => setVisible(false)}
-              className="absolute h-[20px] w-[20px] right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500"
-            />
-          ) : (
-            <BsEyeSlash
-              onClick={() => setVisible(true)}
-              className="absolute h-[20px] w-[20px] right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500"
-            />
-          )}
-        </div>
+          required={true}
+        />
+        <PasswordInput
+          placeholder="Password"
+          onChange={e => setPassword(e.target.value)}
+        />
         <button style={{background:colour}} 
          onMouseEnter={(e) => (e.target.style.backgroundColor = altColour)}
          onMouseLeave={(e) => (e.target.style.backgroundColor = colour)}
