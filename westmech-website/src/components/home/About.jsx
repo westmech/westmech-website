@@ -17,7 +17,7 @@ const About = () => {
                     </p>
                     <div className="w-full flex-row-start gap-5 text-[#161616] mt-4">
                         {/* // TODO: Add link to buttons */}
-                        <Button type="primary">
+                        <Button type="secondary">
                         Sign up for a class
                         </Button>
                         <Button type="secondary" endIcon={<ArrowRightAltIcon />}>

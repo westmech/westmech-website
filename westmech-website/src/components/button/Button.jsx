@@ -7,6 +7,7 @@ import { useTheme } from '@mui/material/styles';
 const Button = ({
     type='primary',
     htmlType = 'button',
+    disabled = false,
     endIcon,
     children,
     sx = {textTransform: 'none'},
@@ -18,6 +19,7 @@ const Button = ({
             return (
                 <MUIButton
                     variant='contained'
+                    disabled={disabled}
                     endIcon={endIcon}
                     disableRipple
                     sx={{
@@ -41,11 +43,12 @@ const Button = ({
             return (
                 <MUIButton
                     variant='outlined'
+                    disabled={disabled}
                     endIcon={endIcon}
                     disableRipple
                     sx={{
-                        border: '1px solid ' + secondary.light,
-                        color: secondary.main,
+                        border: '1px solid ' + secondary.dark,
+                        color: secondary.dark,
                         fontSize: '1.1rem',
                         '&:hover': {
                             bgcolor: secondary.light,
@@ -64,6 +67,7 @@ const Button = ({
             return (
                 <MUIButton
                     variant='text'
+                    disabled={disabled}
                     endIcon={endIcon}
                     disableRipple
                     sx={{
