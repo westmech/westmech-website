@@ -1,10 +1,12 @@
 import React from "react";
-import { blog } from "./blog.json";
+import blogData from "./blog.json";
 import Image from "next/image";
 import Button from "../button/Button";
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 const Blog = () => {
+    const { blog } = blogData;
+    
     return (
         <div className="w-[80vw] flex-col-left">
             {blog.map((item, key) => (

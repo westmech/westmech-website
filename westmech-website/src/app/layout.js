@@ -1,5 +1,6 @@
 import { Roboto } from "next/font/google";
 import ThemeWrapper from "@/components/ui/ThemeWrapper";
+import { ToastProvider } from "@/components/ui/ToastProvider";
 import Navbar from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui";
 import "./globals.css";
@@ -19,9 +20,11 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <body className={`${inter.className} tracking-tight bg-[#F4F4F6] hide-scrollbar`}>
                 <ThemeWrapper>
-                    <Navbar />
-                    {children}
-                    <Footer />
+                    <ToastProvider position="top-center" maxToasts={3}>
+                        <Navbar />
+                        {children}
+                        <Footer />
+                    </ToastProvider>
                 </ThemeWrapper>
             </body>
         </html>

@@ -22,6 +22,7 @@ import { Menu as MenuIcon } from "@mui/icons-material";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Button from "../button/Button";
+import { useToast } from "./ToastProvider";
 
 function HideOnScroll(props) {
   const { children } = props;
@@ -40,6 +41,7 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const { showInfo, showSuccess, showWarning, showError } = useToast();
 
   const navigationItems = [
     { title: "Home", url: "/" },
@@ -57,8 +59,12 @@ const Navbar = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const handleNavigation = (url) => {
+  const handleNavigation = (url, title) => {
     setMobileOpen(false);
+  };
+
+  const handleRegisterClick = () => {
+    showSuccess("Registration form will open soon!");
   };
 
   const drawer = (
@@ -79,7 +85,7 @@ const Navbar = () => {
             key={item.title}
             component="a"
             href={item.url}
-            onClick={() => handleNavigation(item.url)}
+            onClick={() => handleNavigation(item.url, item.title)}
             sx={{
               color: active === item.url ? "black" : "#939393",
               "&:hover": {
@@ -92,7 +98,7 @@ const Navbar = () => {
         ))}
       </List>
       <Box sx={{ p: 2 }}>
-        <Button type="primary">
+        <Button type="primary" onClick={handleRegisterClick}>
           Register Now
         </Button>
       </Box>
@@ -144,6 +150,7 @@ const Navbar = () => {
                       key={item.title}
                       component="a"
                       href={item.url}
+                      onClick={() => handleNavigation(item.url, item.title)}
                       sx={{
                         color: active === item.url ? theme.palette.text.primary : theme.palette.text.secondary,
                         textTransform: "none",
@@ -166,6 +173,7 @@ const Navbar = () => {
               {!isMobile && (
                 <Button
                   type="primary"
+                  onClick={handleRegisterClick}
                   sx={{
                     fontSize: '1rem',
                     minWidth: "120px",
@@ -216,6 +224,7 @@ const Navbar = () => {
       </Drawer>
 
       <Box sx={{ height: 96 }} />
+      
     </>
   );
 };
