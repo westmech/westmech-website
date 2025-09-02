@@ -27,7 +27,7 @@ const Hero = () => {
                 
             </header>
 
-            <Dropdown options={options} value={selectedValue} onChange={(value) => setSelectedValue(value)} placeholder="Select an option" />
+            {/* <Dropdown options={options} value={selectedValue} onChange={(value) => setSelectedValue(value)} placeholder="Select an option" /> */}
 
 
             <figure className="relative w-full sm:w-[80vw] h-[50vh] sm:h-[90vh] rounded-xl overflow-hidden mt-6 sm:mt-0">
