@@ -34,3 +34,10 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## MongoDB Setup
+1. Make sure you have access to westmech-dev cluster
+2. Make sure you are added as a user to westmech-db
+3. Click "connect" button on the Clusters page to westmech-dev cluster
+4. Create a .env file and add the variable MONGODB_URI=mongodb+srv://<username>:<db_password>@westmech-dev.lmucghx.mongodb.net/
+5. Replace <username> and <db_password> with your username and db_password for the westmech-db

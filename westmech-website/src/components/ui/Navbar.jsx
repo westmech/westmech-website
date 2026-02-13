@@ -18,6 +18,9 @@ import {
   useScrollTrigger,
 } from "@mui/material";
 
+import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
+
 import { Menu as MenuIcon } from "@mui/icons-material";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -40,13 +43,14 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
+  const { data: session, status } = useSession();
+  const membersPortalUrl = session ? "/" : "members-portal/sign-in"; // to replace with dashboard url once dashboard exists
   const navigationItems = [
     { title: "Home", url: "/" },
     { title: "About", url: "/about" },
     { title: "Programs", url: "/programs" },
     { title: "Blog", url: "/blog" },
-    { title: "Members Portal", url: "/members-portal" },
+    { title: "Members Portal", url: membersPortalUrl },
   ];
 
   useEffect(() => {

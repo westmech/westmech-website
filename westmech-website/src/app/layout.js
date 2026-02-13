@@ -2,6 +2,7 @@ import { Roboto } from "next/font/google";
 import ThemeWrapper from "@/components/ui/ThemeWrapper";
 import Navbar from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui";
+import { AuthProvider } from "./Providers";
 import "./globals.css";
 
 const inter = Roboto({
@@ -19,10 +20,12 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <body className={`${inter.className} tracking-tight bg-[#F4F4F6] hide-scrollbar`}>
                 <ThemeWrapper>
+                    <AuthProvider>
                     <Navbar />
-                    {children}
-                    <Footer />
-                </ThemeWrapper>
+                        {children}
+                        <Footer />
+                </AuthProvider>
+            </ThemeWrapper>
             </body>
         </html>
     );

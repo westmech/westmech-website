@@ -7,6 +7,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 const Navbar = () => {
     const location = usePathname();
@@ -14,13 +16,15 @@ const Navbar = () => {
     const [transition, setTransition] = useState(false);
     const [hidden, setHidden] = useState(false);
     const [menu, setMenu] = useState(false);
+    const { data: session, status } = useSession();
+ 
+    const membersPortalUrl = session ? "/" : "members-portal/sign-in"; // to replace with dashboard url once dashboard exists
 
     const { scrollY } = useScroll();
 
     useEffect(() => {
         setActive(`/${String(location).split("/")[1]}`);
     });
-
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         const previous = scrollY.getPrevious();
@@ -60,7 +64,7 @@ const Navbar = () => {
                         ["About", "/about"],
                         ["Programs", "/programs"],
                         ["Blog", "/blog"],
-                        ["Members Portal", "/members-portal"],
+                        ["Members Portal", membersPortalUrl],
                     ].map(([title, url]) => (
                         <a
                             href={url}
@@ -74,6 +78,7 @@ const Navbar = () => {
                             {title}
                         </a>
                     ))}
+                   {session && <button onClick={() => signOut()} className="bg-blue-600 text-white rounded-md p-2">Sign Out</button>}
                 </section>
 
                 <figure className="w-1/3 flex-row-end">
