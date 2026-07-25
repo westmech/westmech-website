@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Western Mechatronics — design tokens
+   Ported from the WM Claude Design system (colors, typography,
+   spacing, effects). Borders do the work; shadows stay quiet.
+   Fonts are loaded via <link> in app/layout.tsx.
+   ============================================================ */
+
+:root {
+  /* Base — warm-neutral paper + near-black ink */
+  --paper: #f5f5f2;
+  --paper-raised: #ffffff;
+  --paper-sunken: #ecece7;
+  --ink: #141414;
+  --ink-2: #3d3d3a;
+  --ink-3: #77776f;
+  --ink-4: #a9a9a1;
+
+  /* Blue — bright azure for UI, blueprint navy for backgrounds */
+  --azure: #1580e4;
+  --azure-hover: #106bc2;
+  --azure-press: #0d5aa5;
+  --azure-tint: #e3effc;
+  --navy: #23446e;
+  --navy-deep: #182f4e;
+  --on-navy: #f5f5f2;
+  --on-navy-muted: #9fb4cf;
+  --blueprint-line: #4e6e9c;
+
+  /* Lines */
+  --line: #d8d8d2;
+  --line-strong: #141414;
+  --line-on-navy: #38547e;
+
+  /* Semantic */
+  --ok: #1d7a4f;
+  --warn: #b0700f;
+  --danger: #c03a2b;
+  --ok-tint: #e1f0e8;
+  --warn-tint: #f7ecd9;
+  --danger-tint: #f9e5e2;
+
+  --accent: var(--azure);
+
+  /* Fonts */
+  --font-sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", Consolas, monospace;
+
+  /* Type scale (desktop) */
+  --text-display: 600 clamp(44px, 5.2vw, 72px) / 1.06 var(--font-sans);
+  --text-h1: 600 40px/1.1 var(--font-sans);
+  --text-h2: 600 28px/1.2 var(--font-sans);
+  --text-h3: 600 20px/1.3 var(--font-sans);
+  --text-body-lg: 400 17px/1.6 var(--font-sans);
+  --text-body-md: 400 15px/1.6 var(--font-sans);
+  --text-body-sm: 400 13.5px/1.5 var(--font-sans);
+  --text-label: 600 12.5px/1.2 var(--font-sans);
+  --text-mono-caption: 400 11.5px/1.5 var(--font-mono);
+
+  --tracking-tight: -0.02em;
+  --tracking-label: 0.08em;
+
+  /* Spacing + layout */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+
+  --page-max: 1120px;
+  --page-pad: 32px;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  /* Shadows — restrained */
+  --shadow-card: 0 1px 2px rgba(20, 20, 20, 0.05);
+  --shadow-raised: 0 2px 8px rgba(20, 20, 20, 0.08), 0 1px 2px rgba(20, 20, 20, 0.06);
+  --shadow-modal: 0 12px 40px rgba(20, 20, 20, 0.18);
+
+  /* Grid-paper texture */
+  --grid-size: 24px;
+  --grid-paper: linear-gradient(rgba(20, 20, 20, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 20, 20, 0.045) 1px, transparent 1px);
+  --grid-navy: linear-gradient(rgba(245, 245, 242, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 245, 242, 0.07) 1px, transparent 1px);
+
+  /* Photo treatment — FILM GRAIN system:
+     default B&W grain, color break for payoff moments, duotone on navy */
+  --photo-filter: grayscale(1) contrast(1.02) brightness(1.04);
+  --photo-filter-color: contrast(1.05) saturate(1.12);
+  --photo-filter-duotone: grayscale(1) contrast(1.1) brightness(1.08);
+  --photo-vignette: inset 0 0 120px rgba(20, 20, 20, 0.35);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 120ms;
+  --dur-med: 220ms;
+}
+
+/* Expose a subset of tokens to Tailwind utilities (bg-paper, text-ink, …) */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-paper-sunken: var(--paper-sunken);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-azure: var(--azure);
+  --color-navy: var(--navy);
+  --color-line: var(--line);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Accessibility: skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+}
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+}
+
+/* Layout helpers */
+.wm-container {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+}
+
+/* Responsive nav: desktop links vs mobile toggle */
+.wm-nav-desktop {
+  display: flex;
+}
+.wm-nav-toggle {
+  display: none;
+}
+@media (max-width: 820px) {
+  .wm-nav-desktop {
+    display: none;
+  }
+  .wm-nav-toggle {
+    display: inline-flex;
+  }
+}
+@media (min-width: 821px) {
+  .wm-nav-mobile {
+    display: none;
+  }
+}
+
+/* Hero mono tag — hide on narrow screens to avoid colliding with CTAs */
+@media (max-width: 900px) {
+  .wm-hero-tag {
+    display: none;
+  }
+}
+
+/* Collapse 2-up / multi-col grids on small screens */
+@media (max-width: 820px) {
+  .wm-collapse {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+@media (max-width: 640px) {
+  :root {
+    --page-pad: 20px;
+    /* Scale the display face down so long headline words don't overflow */
+    --text-display: 600 clamp(30px, 8.5vw, 44px) / 1.08 var(--font-sans);
+  }
+  .wm-collapse-sm {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  /* Let headline text break within the column */
+  h1,
+  h2 {
+    overflow-wrap: break-word;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
